@@ -2,7 +2,7 @@ init application:
 docker-compose -f Docker/local-env.docker-compose.yml build
 docker-compose -f Docker/local-env.docker-compose.yml up -d
 
-# after init, it shpuld create a database called "CryptoPortfolio" and two collections "Portfolios" and "Users"
+# after init, it should create a database called "CryptoPortfolio" and two collections "Portfolios" and "Users"
 
 db user: root
 password: 1234
