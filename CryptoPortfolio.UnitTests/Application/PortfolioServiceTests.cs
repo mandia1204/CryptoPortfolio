@@ -144,12 +144,6 @@ namespace CryptoPortfolio.UnitTests.Application
             _repositoryMock.Setup(x => x.FindOneAsync(It.IsAny<Expression<Func<Portfolio, bool>>>()))
                 .ReturnsAsync(existing);
 
-            _repositoryMock.Setup(x => x.UpdateAsync(It.IsAny<string>(), It.IsAny<Portfolio>()))
-                .Callback<string,Portfolio>((s, c) =>
-                {
-                    c.Coin = "ETH";
-                });
-
             var command = new UpdatePortfolioCommand
             {
                 Id = "655baf2db260a0f03985df8a",
@@ -160,7 +154,6 @@ namespace CryptoPortfolio.UnitTests.Application
             var result = await _service.UpdatePortfolio(command);
 
             Assert.That(result.Id, Is.EqualTo("655baf2db260a0f03985df8a"));
-            Assert.That(result.Coin, Is.EqualTo("ETH"));
             Assert.That(result.Quantity, Is.EqualTo(20));
 
             _repositoryMock.Verify(x => x.UpdateAsync(command.Id, It.Is<Portfolio>(c => c.Quantity == 20)), Times.Once());

@@ -92,7 +92,6 @@ namespace CryptoPortfolio.Application.Portfolios.Services
             {
                 Id = portfolio.Id,
                 Message = Messages.UpdateSuccess,
-                Coin = portfolio.Coin,
                 Quantity = command.Quantity
             };
         }

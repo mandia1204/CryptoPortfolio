@@ -64,7 +64,7 @@ namespace CryptoPortfolio.Controllers
 
             var result = await _service.UpdatePortfolio(request);
 
-            return Ok();
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]

@@ -6,8 +6,11 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 1234
+      MONGO_INITDB_DATABASE: CryptoPortfolio
     ports:
       - "27017:27017"
+    volumes:
+      - ./init-mongo-db-with-collections.js:/docker-entrypoint-initdb.d/init-mongo-db-with-collections.js:ro
   portfolioapi:
     depends_on:
       - mongo

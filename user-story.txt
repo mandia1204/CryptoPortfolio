@@ -1,0 +1,35 @@
+Crypto Portfolio App 1.0
+
+This app help us to keep track of our investments in cryptocurrencies. The functionality for the version 1.0 is:
+
+Security Features
+-----------------
+
+1- Create User
+    - User is able to register his username and password, this information is persisted.
+2- Login User
+    - User can login to the app using his username and password, after login the api should return the authentication token that will be used to call
+    the Portfolio API.
+    - When the authentication fails because of bad input, API should return message "User or password incorrect"
+3- Authentication
+    - The API should not allow requests if a valid token is not included in the request, this should be enforced in the Portfolio API.
+4- Authorization
+    - A User can't modify other User data. When the included user id in the request payload doesn't match with the current user, the API should return: "User not permitted to access this resource."
+
+Portfolio Features
+------------------
+
+1- Find Portfolios
+    - User can list the portfolios, a User can only view its own data.
+2- Create Portfolio
+    - User can create a portfolio including the following information:
+        - Quantity, decimal number that represents the number of coins. It should be Greater or Equal to zero.
+        - Coin, a string representing the Coin abbreviation, max length 5 characters.
+    - When a User request includes an existing coin, the existing coin quantity will be updated adding the request quantity.
+    - Api should return current balance of the coins.
+3- Update Portfolio
+    - User can update the quantity of an existing Portfolio.
+    - When the portfolio id doesn't exist, API should return "The specified resource was not found." 
+4- Delete Portfolio
+    - User can delete a Portfolio.
+    - When the portfolio id doesn't exist, API should return "The specified resource was not found." 
