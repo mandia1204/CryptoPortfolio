@@ -1,0 +1,22 @@
+services:
+  mongo:
+    image: mongo
+    restart: always
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 1234
+    ports:
+      - "27017:27017"
+  portfolioapi:
+    depends_on:
+      - mongo
+    container_name: portfolioapi
+    build:
+      dockerfile: ./Docker/CryptoPorfolio.Dockerfile
+      context: ..\
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    command:  run
